@@ -1,0 +1,13 @@
+diff --git a/feeds/custom/fcgiwrap/Makefile b/feeds/custom/fcgiwrap/Makefile
+index 5499d9f..aee6d11 100644
+--- a/feeds/custom/fcgiwrap/Makefile
++++ b/feeds/custom/fcgiwrap/Makefile
+@@ -36,7 +36,7 @@ define Package/fcgiwrap
+   SUBMENU:=Web Servers/Proxies
+   TITLE:=fcgiwrap for web server
+   URL:=https://github.com/gnosek/fcgiwrap.git
+-  DEPENDS:=+spawn-fcgi +fcgi
++  DEPENDS:=+fcgi
+   MENU:=0
+ endef
+ 

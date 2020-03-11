@@ -1,0 +1,11 @@
+diff --git a/feeds/luci/applications/luci-app-aria2/luasrc/view/aria2/overview_status.htm b/feeds/luci/applications/luci-app-aria2/luasrc/view/aria2/overview_status.htm
+index 2d22402..003082a 100644
+--- a/feeds/luci/applications/luci-app-aria2/luasrc/view/aria2/overview_status.htm
++++ b/feeds/luci/applications/luci-app-aria2/luasrc/view/aria2/overview_status.htm
+@@ -1,5 +1,5 @@
+ <script type="text/javascript">//<![CDATA[
+-XHR.poll(5, '<%=luci.dispatcher.build_url("admin/nas/aria2/status")%>', null,
++XHR.poll(5, '<%=luci.dispatcher.build_url("admin/services/aria2/status")%>', null,
+ 	function(x, data) {
+ 		var tb = document.getElementById('aria2_status');
+ 		if (data && tb) {

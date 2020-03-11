@@ -1,0 +1,44 @@
+From 248184750b94d235e2d70264975ab48bcf3429c4 Mon Sep 17 00:00:00 2001
+From: haiqiang xu <haig8@msn.com>
+Date: Tue, 3 Sep 2019 12:16:32 +0800
+Subject: [PATCH] fstools: fix libblkid-tiny ntfs uuid detection
+
+detect ntfs uuid fails because blkid_probe_get_buffer override memory of buf,
+so move blkid_probe_sprintf_uuid to before blkid_probe_get_buffer
+
+Signed-off-by: Haiqiang Xu <haig8@msn.com>
+---
+ libblkid-tiny/ntfs.c | 9 +++++----
+ 1 file changed, 5 insertions(+), 4 deletions(-)
+
+diff --git a/libblkid-tiny/ntfs.c b/libblkid-tiny/ntfs.c
+index 93c1d88..51252ea 100644
+--- a/libblkid-tiny/ntfs.c
++++ b/libblkid-tiny/ntfs.c
+@@ -158,6 +158,11 @@ static int probe_ntfs(blkid_probe pr, const struct blkid_idmag *mag)
+ 			sectors_per_cluster, nr_clusters,
+ 			off));
+ 
++	blkid_probe_sprintf_uuid(pr,
++			(unsigned char *) &ns->volume_serial,
++			sizeof(ns->volume_serial),
++			"%016" PRIX64, le64_to_cpu(ns->volume_serial));
++
+ 	buf_mft = blkid_probe_get_buffer(pr, off, mft_record_size);
+ 	if (!buf_mft)
+ 		return errno ? -errno : 1;
+@@ -206,10 +211,6 @@ static int probe_ntfs(blkid_probe pr, const struct blkid_idmag *mag)
+ 	}
+ #endif
+ 
+-	blkid_probe_sprintf_uuid(pr,
+-			(unsigned char *) &ns->volume_serial,
+-			sizeof(ns->volume_serial),
+-			"%016" PRIX64, le64_to_cpu(ns->volume_serial));
+ 	return 0;
+ }
+ 
+-- 
+2.22.0
+
+
