@@ -46,8 +46,10 @@ popd
 patchdir ../patches 1
 
 # 更新源
-# ./scripts/feeds update -a
-# ./scripts/feeds install -a
+cat feeds.conf.default > feeds.conf
+echo 'src-link custom $dir/feeds' >> feeds.conf
+./scripts/feeds update -a
+./scripts/feeds install -a
 
 # 文件
 # ln -sfn ../../files/localmirrors scripts/
