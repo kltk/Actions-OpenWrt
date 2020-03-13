@@ -44,6 +44,8 @@ popd
 
 # 打补丁
 patchdir ../patches 1
+cp -f $dir/files/include-target.mk include/target.mk
+cp -f $dir/files/target-linux-ipq40xx-Makefile target/linux/ipq40xx/Makefile
 
 # 更新源
 cat feeds.conf.default > feeds.conf
