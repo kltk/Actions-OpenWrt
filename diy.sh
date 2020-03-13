@@ -47,7 +47,7 @@ patchdir ../patches 1
 
 # 更新源
 cat feeds.conf.default > feeds.conf
-echo 'src-link custom $dir/feeds' >> feeds.conf
+echo "src-link custom $dir/feeds" >> feeds.conf
 ./scripts/feeds update -a
 ./scripts/feeds install -a
 
