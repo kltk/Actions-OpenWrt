@@ -18,7 +18,7 @@ patchdir() {
   done
 }
 
-dir=`dirname $0`
+dir=`realpath \`dirname $0\``
 device=$1
 if [ "$device" = "" ]; then
   device=acrh17
@@ -29,8 +29,8 @@ if [ ! -f "$dir/$device.config" ]; then
   exit 1
 fi
 
-git clone --depth 1 https://github.com/yhfudev/openwrt-fcgiwrap.git ../feeds/fcgiwrap
-pushd ../feeds/fcgiwrap
+git clone --depth 1 https://github.com/yhfudev/openwrt-fcgiwrap.git $dir/feeds/fcgiwrap
+pushd $dir/feeds/fcgiwrap
   # gitcheckout .
   patchdir ../../patches/fcgiwrap 4
 popd
@@ -43,7 +43,7 @@ popd
 # git pull
 
 # 打补丁
-patchdir ../patches 1
+patchdir $dir/patches 1
 cp -f $dir/files/include-target.mk include/target.mk
 cp -f $dir/files/target-linux-ipq40xx-Makefile target/linux/ipq40xx/Makefile
 
