@@ -1,0 +1,11 @@
+--- a/configure.ac	2015-04-19 09:37:12.000000000 +0000
++++ b/configure.ac	2019-12-09 06:45:01.544513000 +0000
+@@ -3,7 +3,7 @@
+ 
+ AC_PREREQ(2.61)
+ AC_INIT([fcgiwrap], [1.1.0], [root@localdomain.pl])
+-AM_CFLAGS="-std=gnu99 -Wall -Wextra -Werror -pedantic"
++AM_CFLAGS="-std=gnu99 -Wall -Wextra -pedantic"
+ if test x"$CFLAGS" = x""; then
+     AM_CFLAGS="$AM_CFLAGS -O2 -g3"
+ else
