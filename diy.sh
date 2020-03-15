@@ -31,7 +31,7 @@ fi
 
 git clone --depth 1 https://github.com/yhfudev/openwrt-fcgiwrap.git $dir/feeds/fcgiwrap
 mkdir $dir/feeds/fcgiwrap/patches
-cp -f files/001-configure.ac.patch $dir/feeds/fcgiwrap/patches
+cp -f $dir/file/001-configure.ac.patch $dir/feeds/fcgiwrap/patches
 pushd $dir/feeds/fcgiwrap
   # gitcheckout .
   patchdir ../../patches/fcgiwrap 4
@@ -46,8 +46,8 @@ popd
 
 # 打补丁
 patchdir $dir/patches 1
-cp -f files/include-target.mk include/target.mk
-cp -f files/target-linux-ipq40xx-Makefile target/linux/ipq40xx/Makefile
+# cp -f $dir/file/include-target.mk include/target.mk
+# cp -f $dir/file/target-linux-ipq40xx-Makefile target/linux/ipq40xx/Makefile
 
 # 更新源
 cat feeds.conf.default > feeds.conf
@@ -56,8 +56,8 @@ echo "src-link custom $dir/feeds" >> feeds.conf
 ./scripts/feeds install -a
 
 # 文件
-# ln -sfn ../../files/localmirrors scripts/
-ln -sfn ../../../../../files/0001-fstools-fix-libblkid-tiny-ntfs-uuid-detection.patch package/system/fstools/patches/
+# cp -f $dir/file/localmirrors scripts/
+cp -f $dir/file/0001-fstools-fix-libblkid-tiny-ntfs-uuid-detection.patch package/system/fstools/patches/
 
 rm -f .config*
 touch .config
