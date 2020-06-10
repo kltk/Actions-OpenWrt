@@ -50,8 +50,8 @@ patchdir $dir/patches 1
 # cp -f $dir/file/target-linux-ipq40xx-Makefile target/linux/ipq40xx/Makefile
 
 wget -q -O lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2.zip https://github.com/coolsnowwolf/lede/archive/cc689609d63c6e8d22ea965be2c8bfcb38b860d2.zip
-unzip lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2.zip 'lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2/package/lean/luci-app-ssr-plus/*' -d package/lean/luci-app-ssr-plus
-mv 'package/lean/luci-app-ssr-plus/lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2/package/lean/luci-app-ssr-plus' package/lean
+unzip lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2.zip 'lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2/package/lean/luci-app-ssr-plus/*'
+mv 'lede-cc689609d63c6e8d22ea965be2c8bfcb38b860d2/package/lean/luci-app-ssr-plus' package/lean
 
 # 更新源
 cat feeds.conf.default > feeds.conf
